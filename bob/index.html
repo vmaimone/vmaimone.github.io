@@ -31,14 +31,14 @@
         <tr ng-repeat="contact in contacts">
           <!-- <td><pre>{{contact | json}}</pre></td> -->
           <!-- <td ng-bind="contact.guid"></td> -->
-          <td ng-bind="contact.name"></td>
-          <td ng-bind="contact.gender"></td>
-          <td ng-bind="contact.company"></td>
-          <td ng-bind="contact.email"></td>
-          <td ng-bind="contact.phone"></td>
-          <!-- <td ng-bind="contact.address"></td> -->
-          <td ng-bind="contact.isActive"></td>
-          <td ng-bind="contact.balance"></td>
+          <td ng-bind="::contact.name"></td>
+          <td ng-bind="::contact.gender"></td>
+          <td ng-bind="::contact.company"></td>
+          <td ng-bind="::contact.email"></td>
+          <td ng-bind="::contact.phone"></td>
+          <!-- <td ng-bind="::contact.address"></td> -->
+          <td ng-bind="::contact.isActive"></td>
+          <td ng-bind="::contact.balance"></td>
         </tr>
       </tbody>
     </table>
