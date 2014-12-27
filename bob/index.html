@@ -1,1 +1,52 @@
-<h1>holy cow!!!</h1>
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ramda/0.8.0/ramda.min.js"></script>
+  </head>
+  <body ng-app="app" ng-controller="MainCtrl" class="container" style="width:88%">
+    <h2 class="text-center">Floating Headers Demo</h2>
+
+    <table class="table table-condensed table-bordered table-hover table-striped">
+      <thead >
+        <tr floating-header>
+          <!-- <th>data</th> -->
+          <th>guid</th>
+          <th>name</th>
+          <th>gender</th>
+          <th>company</th>
+          <th>email</th>
+          <th>phone</th>
+          <th>address</th>
+          <th>active</th>
+          <th>balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="contact in contacts">
+          <!-- <td><pre>{{contact | json}}</pre></td> -->
+          <td ng-bind="contact.guid"></td>
+          <td ng-bind="contact.name"></td>
+          <td ng-bind="contact.gender"></td>
+          <td ng-bind="contact.company"></td>
+          <td ng-bind="contact.email"></td>
+          <td ng-bind="contact.phone"></td>
+          <td ng-bind="contact.address"></td>
+          <td ng-bind="contact.isActive"></td>
+          <td ng-bind="contact.balance"></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+    <script src="../directives/paginate.directive.js"></script>
+    <script src="../directives/floating-headers.directive.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
