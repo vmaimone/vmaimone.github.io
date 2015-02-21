@@ -1,0 +1,4 @@
+.DS_Store
+WEB-INF
+node_modules
+*.sublime-project
