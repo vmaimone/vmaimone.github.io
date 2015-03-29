@@ -10,7 +10,7 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/ramda/0.8.0/ramda.min.js"></script>
     <style> th { cursor:pointer } </style>
   </head>
-  <body ng-app="app" ng-controller="MainCtrl" class="container" style="width:88%">
+  <body ng-controller="MainCtrl" class="container" style="width:88%;margin-bottom:500px;">
     <h2 class="page-header">Floating Headers <small>Demo</small></h2>
 
 
@@ -78,6 +78,9 @@
     <script src="../directives/paginate.directive.js"></script>
     <script src="../directives/floating-headers.directive.js"></script>
     <script src="../directives/sortable.directive.js"></script>
-    <script src="app.js"></script>
+    <!-- // <script src="app.js"></script> -->
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script> System.import('app'); </script>
   </body>
 </html>

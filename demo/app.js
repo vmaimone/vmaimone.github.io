@@ -1,10 +1,12 @@
-angular.module('app',['paginate','floatingHeaders','sortable'])
+import 'config';
 
+angular
+  .module('app',['paginate','floatingHeaders','sortable'])
 
-.controller('MainCtrl', ['$scope', 'contacts', '$pager', function ($scope,contacts,$pager) {
+  .controller('MainCtrl', ['$scope', 'contacts', '$pager', function ($scope,contacts,$pager) {
 
   $scope.contacts = [];
-  $scope.pageSize = 50;
+  $scope.pageSize = 100;
   $scope.pager = $pager;
 
   //$pager.setCurrentPage( 3 )
@@ -25,10 +27,20 @@ angular.module('app',['paginate','floatingHeaders','sortable'])
 .service('contacts', ['$http',function ($http) {
 
   this.query = function() {
-    var getResponseData = function(response) { return response.data; }
-    return $http.get('../data/contacts.json').then(getResponseData)
+    // var getResponseData = function(response) { return response.data; }
+    return $http.get('../data/contacts.json').then((response) => response.data)
   }
 
 }])
 
 
+;
+
+try {
+  angular.bootstrap( document, ['app'])
+}
+catch ( e ) {
+  console.log(e);
+}
+
+// export default 'app';
