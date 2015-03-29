@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ramda/0.8.0/ramda.min.js"></script>
+    <style> th { cursor:pointer } </style>
+  </head>
+  <body ng-app="app" ng-controller="MainCtrl" class="container" style="width:88%">
+    <h2 class="page-header">Floating Headers <small>Demo</small></h2>
+
+
+
+    <table class="table table-condensed table-bordered table-hover table-striped">
+      <thead >
+        <tr floating-header sortable sort-obj="sortObj">
+          <!-- <th>data</th> -->
+          <!-- <th>guid</th> -->
+          <th sort-key="name">name</th>
+          <th sort-key="gender">gender</th>
+          <th sort-key="company">company</th>
+          <th sort-key="email">email</th>
+          <th sort-key="phone">phone</th>
+          <!-- <th>address</th> -->
+          <th sort-key="isActive">active</th>
+          <th sort-key="balance">balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr paginate="contact in contacts | orderBy:sortObj | itemsPerPage:pageSize ">
+          <!-- <td><pre>{{contact | json}}</pre></td> -->
+          <!-- <td ng-bind="contact.guid"></td> -->
+          <td ng-bind="::contact.name"></td>
+          <td ng-bind="::contact.gender"></td>
+          <td ng-bind="::contact.company"></td>
+          <td ng-bind="::contact.email"></td>
+          <td ng-bind="::contact.phone"></td>
+          <!-- <td ng-bind="::contact.address"></td> -->
+          <td ng-bind-template="{{::contact.isActive ? '&#x2714;' : ''}}"></td>
+          <td ng-bind="::contact.balance"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="7" class="text-right">
+
+        </tr>
+      </tfoot>
+    </table>
+
+
+
+      <div style="">
+
+    <div class="pull-left">
+        <span ng-bind="pager.info" style=""></span>&nbsp;&nbsp;&nbsp;
+        <!-- <select class="" ng-model="pageSize"> -->
+          <!-- <option ng-repeat="i in [10,25,50,100]" ng-value="i" ng-selected="i == pageSize">{{i}} items/page</option> -->
+        <!-- </select> -->
+    </div>
+    <div class="clear-fix"></div>
+
+    <div class="pull-right">
+      <a class="btn btn-sm btn-default" ng-click="pager.firstPage()">First Page</a>
+      <a class="btn btn-sm btn-default" ng-click="pager.prevPage()">Prev Page</a>
+      <a class="btn btn-sm btn-default" ng-click="pager.nextPage();">Next Page</a>
+      <a class="btn btn-sm btn-default" ng-click="pager.lastPage()">Last Page</a>
+    </div>
+
+  </div>
+
+
+
+    <script src="../directives/paginate.directive.js"></script>
+    <script src="../directives/floating-headers.directive.js"></script>
+    <script src="../directives/sortable.directive.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
