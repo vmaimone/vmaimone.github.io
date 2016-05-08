@@ -16,7 +16,8 @@
           position: 'fixed',
           top: 0,
           visibility: 'hidden',
-          backgroundColor: opts.bgColor||'white'
+          backgroundColor: opts.bgColor||'white',
+          "z-index": 1
         })
 
       element.after(cloned);
@@ -78,3 +79,6 @@
     /* ========================================================================================== */
   }
 }());
+
+
+
