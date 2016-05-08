@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Gridform Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.22/vue.min.js"></script>
+    <script src="vue-gridform.min.js"></script>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+        }
+
+        #form-example {
+            width: 88%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid lightgray;
+            padding: .5rem .5rem .75rem .5rem;
+        }
+
+        #output-example {
+            width: 88%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #app pre {
+            background-color: whitesmoke;
+            padding: 1rem;
+            margin: 0;
+            border-radius: 4px;
+            border: 1px solid lightgray;
+        }
+
+        #app .toggles {
+            display: inline-block;
+            margin: 0 0 0 1.5em;
+        }
+
+        #app .toggles button {
+            padding: .5rem;
+            margin: auto 1em;
+        }
+
+        #app h2 {
+            display: inline-block;
+        }
+
+        .grid-form-header {
+            text-align: right;
+        }
+
+        .form-footer {
+            text-align: right;
+        }
+
+        .form-footer button {
+            font-size: 1.1em;
+            padding: .75em;
+        }
+
+        .no-grid-msg {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2>Vue Gridform Demo</h2>
+
+        <div class="toggles">
+            <button @click="switchForms(inventoryForm)">Inventory Form</button>
+            <button @click="switchForms(newUserForm)">New User Form</button>
+            <button @click="viewSchema" v-text="viewingSchema ? 'Show Form' : 'Show Schema'"></button>
+        </div>
+
+        <div v-if="activeForm.schema">
+            <div v-if="!viewingSchema">
+
+                <grid-form v-ref:test-form id="form-example" @submit.prevent="handleSubmit" :header="activeForm.title" :sections="activeForm.schema">
+
+                    <div class="form-footer">
+                        <button class="form-submit" type="submit" v-text="'Submit'">
+              </button>
+                    </div>
+
+                </grid-form>
+
+            </div>
+            <div v-else>
+                <pre v-text="activeForm.schema | json"></pre>
+            </div>
+
+        </div>
+        <div v-else class="no-grid-msg" v-html="'<br><h2>Please choose a form</h2>'">
+        </div>
+
+        <div id="output-example" v-if="formResults">
+            <h3 v-text="'Submission Results'"></h3>
+
+            <div>
+                <h5 v-text="'Results as an Object'"></h5>
+                <pre v-text="formResults.obj | json"></pre>
+            </div>
+
+            <div>
+                <h5 v-text="'Results as an Array'"></h5>
+                <pre v-text="formResults.arr | json"></pre>
+            </div>
+        </div>
+
+    </div>
+    <script src="demo.js"></script>
+</body>
+
+</html>
